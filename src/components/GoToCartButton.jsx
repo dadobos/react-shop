@@ -6,7 +6,7 @@ const GoToCartButton = (props) => {
 		<div>
 			{text}
 			<br />
-			<Link to='/cart' className='go-to-cart'>
+			<Link to='/online-shop/cart' className='go-to-cart'>
 				<span>Go To Cart </span>
 				<span>
 					<svg

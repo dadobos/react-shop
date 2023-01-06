@@ -19,8 +19,8 @@ function App() {
 				<ToastContainer />
 				<Navbar />
 				<Routes>
-					<Route path='cart' element={<Cart />} />
-					<Route path='/' element={<Home />} />
+					<Route path='/online-shop/' element={<Home />} />
+					<Route path='/online-shop/cart' element={<Cart />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 				<Footer />

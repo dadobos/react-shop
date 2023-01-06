@@ -7,10 +7,10 @@ const Navbar = () => {
 	return (
 		<div className='navbar-background'>
 			<nav className='navbar'>
-				<Link to='/' className='title'>
+				<Link to='/online-shop/' className='title'>
 					React Online Shop
 				</Link>
-				<Link to='/cart'>
+				<Link to='/online-shop/cart'>
 					<div className='nav-bag'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
