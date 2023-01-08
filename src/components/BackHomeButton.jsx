@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const BackHomeButton = (props) => {
 	const { text } = props;
 	return (
-		<Link to='/online-shop/' className='back-to-home'>
+		<Link to='/' className='back-to-home'>
 			<span>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
