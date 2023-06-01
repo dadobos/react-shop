@@ -8,7 +8,7 @@ const Navbar = () => {
 		<div className='navbar-background'>
 			<nav className='navbar'>
 				<Link to='/' className='title'>
-					React Online Shop
+					React Shop
 				</Link>
 				<Link to='/cart'>
 					<div className='nav-bag'>
