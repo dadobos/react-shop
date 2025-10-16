@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { Capitalize } from './Utils';
+import Capitalize  from '../components/Capitalize';
 import GoToCartButton from '../components/GoToCartButton';
 
 const initialState = {

@@ -8,7 +8,7 @@ import {
 	getTotals,
 } from '../features/cartSlice';
 
-import { Capitalize } from '../features/Utils';
+import  Capitalize  from './Capitalize';
 import BackHomeButton from './BackHomeButton';
 
 const Cart = () => {

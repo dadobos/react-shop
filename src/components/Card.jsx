@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, getTotals } from '../features/cartSlice';
 
-import { Capitalize } from '../features/Utils';
+import  Capitalize  from './Capitalize';
 
 const Card = ({ product }) => {
 	const dispatch = useDispatch();
@@ -18,15 +18,15 @@ const Card = ({ product }) => {
 
 	return (
 		<>
-			<h3 className='title'>{Capitalize(product.title)}</h3>
+			<h3 className='title'>{Capitalize(product?.title  ?? "")}</h3>
 			<div className='image-container'>
-				<img src={product.images[0]} alt={Capitalize(product.title)} />
+				<img src={product.images[0]} alt={Capitalize(product?.title ?? "")} />
 			</div>
 			<div className='category'>
-				<span>{Capitalize(product.category)}</span>
-				<span>{Capitalize(product.brand)}</span>
+				<span>{Capitalize(product?.category ?? "")}</span>
+				<span>{Capitalize(product?.brand ?? "")}</span>
 			</div>
-			<p className='description'>{Capitalize(product.description)}</p>
+			<p className='description'>{Capitalize(product?.description ?? "")}</p>
 			<div>
 				<p className='discount'>
 					<span>Discount: </span>
