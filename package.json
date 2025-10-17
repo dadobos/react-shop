@@ -1,6 +1,6 @@
 {
-	"name": "online-shop",
-	"homepage": "https://dadobos.github.io/online-shop/",
+	"name": "react-shop",
+	"homepage": "https://dadobos.github.io/react-shop/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
