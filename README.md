@@ -11,26 +11,52 @@
 The Online Shop is build with React. It has custom responsive layout styled with SCSS. It makes an API call to fetch mock products from [Dummy JSON API](https://dummyjson.com/products) with Redux [RTK Query](https://redux-toolkit.js.org/rtk-query/overview). Added also Toastify for notifications. 
 The application shows a product home page and a cart page, the routing is done with React Router. 
 
-
-
-## Installation 
 ---
-### Under the repository name, click on clone or download. In the terminal paste this command:
+## Quick overview
+---
+- Browse products retrieved from a mock API
+- View product details and add items to a cart
+- Update item quantities or remove items from the cart
+- Toast notifications for user actions
+- Responsive layout using SCSS
 
+---
+## Tech stack
+---
+- React (functional components + hooks)
+- Redux Toolkit + RTK Query for async data
+- React Router for navigation
+- SCSS for styling
+- react-toastify (notifications)
+
+---
+## Getting started (local)
+---
+1. Clone the repository :
 ```git clone https://dadobos.github.io/online-shop.git```
-
-### Open the project in VSCode or move inside the folder with:
-
+2. Go into the project folder:
 ```cd online-shop```
-
-### Install the npm packages: 
-
+3. Install dependencies:
 ```npm install```
-
-### Run the application with: 
-
+4. Start the dev server:
 ```npm start```
-
-### In the browser open the "3000" port: 
-
+5. Open the app in your browser:
 ```http://localhost:3000/```
+
+---
+## Common scripts
+---
+- npm start — start dev server (hot reload)
+- npm run build — create a production build
+- npm test — run tests (if present)
+- npm run lint — run linters (if configured)
+
+---
+## Notes for development
+---
+- API calls are handled with RTK Query; service files are located in src (look for a services or api directory).
+- Styles are in SCSS — components can import their module styles or use shared partials.
+- Routing lives under src (check App or routes-related files) — add pages or adjust routes there.
+- For mock API changes, update the base URL or endpoints in the RTK Query service file.
+
+
