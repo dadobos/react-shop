@@ -39,7 +39,6 @@ The application shows a product home page and a cart page, the routing is done w
 - npm start — start dev server (hot reload)
 - npm run build — create a production build
 - npm test — run tests (if present)
-- npm run lint — run linters (if configured)
 
 ## Notes for development
 - API calls are handled with RTK Query; service files are located in src (look for a services or api directory).
