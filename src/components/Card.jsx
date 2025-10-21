@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, getTotals } from '../features/cartSlice';
-
-import  Capitalize  from './Capitalize';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, getTotals } from "../features/cartSlice";
 
 const Card = ({ product }) => {
 	const dispatch = useDispatch();
@@ -15,34 +13,34 @@ const Card = ({ product }) => {
 	const handleAddToCart = (product) => {
 		dispatch(addToCart(product));
 	};
-
 	return (
-		<>
-			<h3 className='title'>{Capitalize(product?.title  ?? "")}</h3>
-			<div className='image-container'>
-				<img src={product.images[0]} alt={Capitalize(product?.title ?? "")} />
+		<div className="card-container">
+			<h3 className="title">{product.title}</h3>
+			<div className="image-container">
+				<img src={product.images[0]} alt={product.title} />
 			</div>
-			<div className='category'>
-				<span>{Capitalize(product?.category ?? "")}</span>
-				<span>{Capitalize(product?.brand ?? "")}</span>
+			<div className="category">
+				<span>{product.category}</span>
+				<span>{product.availabilityStatus}</span>
 			</div>
-			<p className='description'>{Capitalize(product?.description ?? "")}</p>
+			<p className="description">{product?.description}</p>
+
 			<div>
-				<p className='discount'>
-					<span>Discount: </span>
-					<span>{product.discountPercentage}%</span>
+				<p className="discount">
+					<span>Discount:</span>
+					<span>{Math.round(product.discountPercentage)} %</span>
 				</p>
-				<p className='price'>
-					<span>Price:</span>
-					<span>€{product.price}</span>
-				</p>
-				<p className='stock'>
+				<p className="stock">
 					<span>Stock:</span>
 					<span>{product.stock}</span>
 				</p>
+				<p className="price">
+					<span>Price:</span>
+					<span>€{product.price}</span>
+				</p>
 			</div>
 			<button onClick={() => handleAddToCart(product)}>Add to cart</button>
-		</>
+		</div>
 	);
 };
 

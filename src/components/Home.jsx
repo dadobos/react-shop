@@ -17,13 +17,17 @@ const Home = () => {
 					<>
 						{data.products?.map((product) => (
 							<Tilt
+								key={product.id}
 								options={{
 									reverse: true,
-									speed: 1200,
+									speed: 300,
+			
 									easing: "cubic-bezier(.09,.67,.54,.76)",
+									gyroscope: true,
 								}}>
-								<article className="card-list" key={product.id}>
-									<Card product={product} />
+								<article className="card-list" >
+							
+									<Card  product={product} />
 								</article>
 							</Tilt>
 						))}

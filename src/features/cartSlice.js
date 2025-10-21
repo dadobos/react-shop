@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import Capitalize  from '../components/Capitalize';
-import GoToCartButton from '../components/GoToCartButton';
 
 const initialState = {
 	cartItems: localStorage.getItem('cartItems')
@@ -27,29 +25,24 @@ const cartSlice = createSlice({
 			if (itemIndex >= 0) {
 				state.cartItems[itemIndex].cartQuantity += 1;
 
-				let multipleItemsText = `Increased ${Capitalize(
+				let multipleItemsText = `Increased ${
 					state.cartItems[itemIndex].title
-				)} quantity to ${state.cartItems[itemIndex].cartQuantity}`;
+				} quantity to ${state.cartItems[itemIndex].cartQuantity}`;
 
-
-
-				toast.info(
-					window.location.href.indexOf('cart') !== -1 ? (
-						multipleItemsText
-					) : (
-						<GoToCartButton text={multipleItemsText} />
-					),
-					toastifyOptions
-				);
+				// Show a toast when quantity is increased
+				if (window.location.href.indexOf('cart') !== -1) {
+					toast.info(multipleItemsText, toastifyOptions);
+				} else {
+					toast.info(multipleItemsText, toastifyOptions);
+					// Optionally, trigger a UI update to show GoToCartButton elsewhere
+				}
 			} else {
 				const tempProduct = { ...action.payload, cartQuantity: 1 };
 				state.cartItems.push(tempProduct);
-				let firstItemText = `${Capitalize(action.payload.title)} added to cart`
+				let firstItemText = `${action.payload.title} added to cart`
 
-				toast.success(
-					<GoToCartButton text={firstItemText} />,
-					toastifyOptions
-				);
+				toast.success(firstItemText, toastifyOptions);
+				// Optionally, trigger a UI update to show GoToCartButton elsewhere
 			}
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 		},
@@ -59,7 +52,7 @@ const cartSlice = createSlice({
 			);
 			state.cartItems = nextCartItems;
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-			toast.error(`${Capitalize(action.payload.title)} removed from cart`, toastifyOptions);
+			toast.error(`${action.payload.title} removed from cart`, toastifyOptions);
 		},
 		decreaseCart(state, action) {
 			const itemIndex = state.cartItems.findIndex(
@@ -68,7 +61,7 @@ const cartSlice = createSlice({
 			if (state.cartItems[itemIndex].cartQuantity > 1) {
 				state.cartItems[itemIndex].cartQuantity -= 1;
 				toast.info(
-					`Decreased ${Capitalize(action.payload.title)} cart quantity`,
+					`Decreased ${action.payload.title} cart quantity`,
 					toastifyOptions
 				);
 			} else if (state.cartItems[itemIndex].cartQuantity === 1) {
@@ -77,26 +70,26 @@ const cartSlice = createSlice({
 				);
 				state.cartItems = nextCartItems;
 				toast.error(
-					`${Capitalize(action.payload.title)} removed from cart`,
+					`${action.payload.title} removed from cart`,
 					toastifyOptions
 				);
 			}
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 		},
-		clearCart(state, action) {
+		clearCart(state) {
 			state.cartItems = [];
 			toast.error(`Cart cleared`, toastifyOptions);
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 		},
 		getTotals(state, action) {
-			let { total, quantity } = state.cartItems.reduce(
+			let { total: cartTotalAmount, quantity: cartTotalQuantity } = state.cartItems.reduce(
 				(cartTotal, cartItem) => {
 					const { price, cartQuantity } = cartItem;
 					const itemTotal = price * cartQuantity;
-
+		
 					cartTotal.total += itemTotal;
 					cartTotal.quantity += cartQuantity;
-
+		
 					return cartTotal;
 				},
 				{
@@ -104,8 +97,8 @@ const cartSlice = createSlice({
 					quantity: 0,
 				}
 			);
-			state.cartTotalQuantity = quantity;
-			state.cartTotalAmount = total;
+			state.cartTotalQuantity = cartTotalQuantity;
+			state.cartTotalAmount = cartTotalAmount;
 		},
 	},
 });

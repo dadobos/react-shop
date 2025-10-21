@@ -8,7 +8,6 @@ import {
 	getTotals,
 } from '../features/cartSlice';
 
-import  Capitalize  from './Capitalize';
 import BackHomeButton from './BackHomeButton';
 
 const Cart = () => {
@@ -55,7 +54,7 @@ const Cart = () => {
 									<div className='cart-product'>
 										<img src={cartItem.images[0]} alt={cartItem.title} />
 										<div>
-											<h3>{Capitalize(cartItem.title)}</h3>
+											<h3>{cartItem.title}</h3>
 											<p>{cartItem.description}</p>
 											<button onClick={() => handleRemoveFromCart(cartItem)}>
 												Remove
@@ -73,7 +72,8 @@ const Cart = () => {
 										</button>
 									</div>
 									<div className='total-price'>
-										€{cartItem.price * cartItem.cartQuantity}
+										
+										€{Math.round((cartItem.price * cartItem.cartQuantity) * 100)/100}
 									</div>
 								</div>
 							))}
@@ -85,9 +85,9 @@ const Cart = () => {
 							<div className='cart-checkout'>
 								<div className='subtotal'>
 									<span>Subtotal</span>
-									<span className='amount'>€{cart.cartTotalAmount}</span>
+									<span className='amount'>€{Math.round(cart.cartTotalAmount * 100)/100}</span>
 								</div>
-								<button>Checkout</button>
+								<button className='button' >Checkout</button>
 							</div>
 						</div>
 						<div className='continue-shopping'>
