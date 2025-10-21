@@ -25,9 +25,9 @@ The application shows a product home page and a cart page, the routing is done w
 
 ## Getting started (local)
 1. Clone the repository :
-```git clone https://dadobos.github.io/online-shop.git```
+```git clone https://dadobos.github.io/react-shop.git```
 2. Go into the project folder:
-```cd online-shop```
+```cd react-shop```
 3. Install dependencies:
 ```npm install```
 4. Start the dev server:
